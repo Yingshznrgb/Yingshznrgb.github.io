@@ -1,3 +1,4 @@
+import { collections } from './content.config';
 import { defineCollection, z } from 'astro:content'
 import { glob } from 'astro/loaders'
 
@@ -56,4 +57,5 @@ const docs = defineCollection({
     })
 })
 
-export const collections = { blog, docs }
+// export const collections = { blog, docs }
+export const collections = { blog }

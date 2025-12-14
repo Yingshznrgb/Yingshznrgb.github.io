@@ -14,33 +14,27 @@ const headings = [
 ---
 
 <PageLayout title='About' {headings} comment>
-  <p>Developer / Designer</p>
+  <p>Student /<Spoiler>帅哥</Spoiler></p>
   <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
-    possit voluptatum.
+    我是「屿知」，一名厦门大学23级在读本科生，专业是计算机科学与技术
   </p>
   <p>
-    Motto: Stay hungry, Stay foolish. <Spoiler>这里可以夹私货，比如为什么要演奏春日影！</Spoiler>
+    Motto:喜欢音乐有什么错
   </p>
   <Button title='Sponsor Me' class='w-fit' href='/projects#sponsorship' variant='ahead' />
 
   {/* general-talk */}
   <h2 id='hobbies'>Hobbies</h2>
   <ul>
-    <li>Lorem ipsum dolor sit amet, vidit suscipit at mei.</li>
-    <li>
-      Quem denique mea id. Usu ei regione indoctum dissentiunt, cu meliore fuisset mei, vel quod
-      voluptua ne.
-    </li>
-    <li>Ex dicat impedit mel, at eum oratio possit voluptatum.</li>
-    <li>Impetus fuisset ullamcorper pri cu, his posse iisque ad, aliquam honestatis usu id.</li>
+    <li>捣鼓一些好玩的.</li>
+    <li>听音乐.</li>
+    <li>躺平.</li>
+    <li>打游戏找我.<Spoiler>wa、zhou、wz、mc、sizhige...</Spoiler></li>
   </ul>
 
   {/* tools */}
-  <h2 id='tools'>Tools</h2>
-  <p>Current support tools as follow:</p>
-  <ToolSection
+  <h2 id='tools'>工具</h2>
+  <!-- <ToolSection
     class='mb-5'
     title='Design'
     tools={[
@@ -69,22 +63,28 @@ const headings = [
         icon: import('@/assets/tools/premiere.svg?raw')
       }
     ]}
-  />
+  /> -->
   <ToolSection
     class='mb-5'
     title='Productivity'
     tools={[
       {
+        name: 'Vscode',
+        description: 'A Great IDE',
+        href: 'https://code.visualstudio.com/',
+        icon: import('@/assets/tools/vscode.svg?raw')
+      },
+      {
         name: 'Chrome',
-        description: 'Browser',
+        description: 'A Great Browser',
         href: 'https://www.google.com/chrome/',
         icon: import('@/assets/tools/chrome.svg?raw')
       },
       {
-        name: 'Firefox',
-        description: 'Browser',
-        href: 'https://www.mozilla.org/en-US/firefox',
-        icon: import('@/assets/tools/firefox.svg?raw')
+        name: 'Ubuntu',
+        description: 'Linux Distribution',
+        href: 'https://ubuntu.cn/',
+        icon: import('@/assets/tools/ubuntu.svg?raw')
       },
       {
         name: 'Notion',
@@ -92,39 +92,11 @@ const headings = [
         href: 'https://www.notion.so/',
         icon: import('@/assets/tools/notion.svg?raw')
       },
-      {
-        name: 'Typora',
-        description: 'Markdown Editor',
-        href: 'https://typora.io/',
-        icon: import('@/assets/tools/typora.svg?raw')
-      }
+      
     ]}
   />
-  <ToolSection
-    class='mb-5'
-    title='Development'
-    tools={[
-      {
-        name: 'VS Code',
-        description: 'IDE',
-        href: 'https://code.visualstudio.com/',
-        icon: import('@/assets/tools/vscode.svg?raw')
-      },
-      {
-        name: 'Neovim',
-        description: 'IDE',
-        href: 'https://neovim.io/',
-        icon: import('@/assets/tools/neovim.svg?raw')
-      },
-      {
-        name: 'Sublime Text',
-        description: 'IDE',
-        href: 'https://www.sublimetext.com/',
-        icon: import('@/assets/tools/sublime.svg?raw')
-      }
-    ]}
-  />
-  <ToolSection
+  
+  <!-- <ToolSection
     class='mb-5'
     title='Environment'
     tools={[
@@ -153,49 +125,45 @@ const headings = [
         icon: import('@/assets/tools/windows11.svg?raw')
       }
     ]}
-  />
+  /> -->
 
   {/* social-networks */}
-  <h2 id='social-networks'>Social Networks</h2>
-  <p>
-    Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
-    dissentiunt, cu meliore fuisset mei, vel quod voluptua ne.
-  </p>
+  <h2 id='social-networks'>社交</h2>
   <Substats
     stats={[
       {
         platform: 'GitHub',
         icon: 'github',
-        link: 'https://github.com/cworld1',
+        link: 'https://github.com/Yingshznrgb',
         text: 'followers',
-        api: 'github/cworld1'
+        api: 'github/Yingshznrgb'
       },
-      {
-        platform: 'Telegram',
-        icon: 'telegram',
-        color: '#2ca5e0',
-        link: 'https://t.me/cworld0_cn',
-        text: 'subscribers',
-        api: 'telegram/cworld0_cn'
-      },
+      // {
+      //   platform: 'Telegram',
+      //   icon: 'telegram',
+      //   color: '#2ca5e0',
+      //   link: 'https://t.me/cworld0_cn',
+      //   text: 'subscribers',
+      //   api: 'telegram/cworld0_cn'
+      // },
       {
         platform: 'Steam',
         icon: 'steam',
         color: '#50769d',
-        link: 'https://steamcommunity.com/id/cworld',
+        link: 'https://steamcommunity.com/profiles/76561199538228003',
         text: 'games',
-        api: 'steamgames/76561199021278120'
+        api: 'steamgames/76561199538228003'
       }
     ]}
   />
 
-  {/* gossips */}
+  <!-- {/* gossips */}
   <h2 id='gossips'>Gossips</h2>
   <Collapse title='Lorem ipsum'>
     Lorem ipsum dolor sit amet, vidit suscipit at mei. Quem denique mea id. Usu ei regione indoctum
     dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
     possit voluptatum.
-  </Collapse>
+  </Collapse> -->
 
   {/* about-blog */}
   <h2 id='about-blog'>About Blog</h2>
@@ -203,41 +171,30 @@ const headings = [
   <Timeline
     events={[
       {
-        date: '2024-04-29',
+        date: '2025-12-14',
         content:
-          'Website refactored using <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://github.com/srleom/astro-theme-resume" target="_blank">Astro Theme Resume</a>'
+          'Website published on <a href="https://github.com/Yingshznrgb/Yingshznrgb.github.io"target="_blank">Github</a>'
       },
       {
-        date: '2024-07-26',
-        content:
-          'Website abstracted as a theme and published on <a href="https://github.com/cworld1/astro-theme-pure"target="_blank">Github</a>'
-      },
-      {
-        date: '2024-07-27',
-        content: 'Began writing website docs'
+        date: '2025-12-14',
+        content: 'Began writing website'
       }
     ]}
   />
-  <p>
+  <!-- <p>
     The smooth operation and personalized customization of website also rely on the resources and
     technical support provided by the following excellent projects/service providers:
-  </p>
+  </p> -->
   <ul>
-    <li>Domain: <a href='#' target='_blank'>Vercel</a></li>
+    <li>Domain: <a href='#' target='_blank'>Github Pages</a></li>
     <li>
       Framework & Theme: <a href='https://astro.build/' target='_blank'>Astro</a> + <a
         href='https://github.com/cworld1/astro-theme-pure'
         target='_blank'>Astro Theme Pure</a
       >
     </li>
-    <li>
-      Site hosting: <a href='https://vercel.com/' target='_blank'>Vercel</a>
-    </li>
-    <li>
-      CI/CD: <a href='https://vercel.com/workflow' target='_blank'>Vercel Workflow</a>
-    </li>
-    <li>Comment system: <a href='https://waline.js.org' target='_blank'>Waline</a></li>
-    <li>
+    
+    <!-- <li>
       Visits: <a href='https://supabase.com/' target='_blank'>Supabase</a> +
       <a href='https://waline.js.org/' target='_blank'>Waline</a>
     </li>
@@ -245,6 +202,6 @@ const headings = [
       Other statistics: <a href='https://github.com/spencerwooo/substats' target='_blank'
         >Substats</a
       >
-    </li>
+    </li> -->
   </ul>
 </PageLayout>
