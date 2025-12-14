@@ -153,6 +153,53 @@ jobs:
 长达一个小时的调试，终于调通了（释然）。
 
 ![alt text](image-9.png)
+
+## 挂到vercel:
+创建账号：continue with github
+选择项目，import即可。
+
+### 配置waline:
+第一阶段：准备数据库 (LeanCloud)
+
+ 需要一个免费的地方存数据。
+1. 打开 LeanCloud 国际版 并注册账号。
+(选国际版是因为不需要域名备案，省事)
+2. 点击 创建应用，名字随便填（比如 MyBlogComments），点击创建。
+3. 进入刚才创建的应用，点击左侧菜单的 设置 (Settings) -> 应用凭证 (App Keys)。
+4. 停在这个页面别动，一会儿我们要复制这里的 AppID、AppKey 和 MasterKey。
+
+第二阶段：部署评论服务 (Vercel)
+
+我们需要在 Vercel 上运行一个 Waline 程序来帮我们管理评论。
+1. 点击这个链接一键部署 Waline。
+2. Vercel 会跳出来让你创建新项目：
+  - Repository Name: 随便填，比如 my-waline。
+  - 点击 Create。
+3. 最关键的一步（配置环境变量）：
+你会看到一个叫 Environment Variables 的折叠框，点开它，把你刚才在 LeanCloud 里看到的三个值填进去：
+  - LEAN_ID 👉 粘贴 LeanCloud 的 AppID
+  - LEAN_KEY 👉 粘贴 LeanCloud 的 AppKey
+  - LEAN_MASTER_KEY 👉 粘贴 LeanCloud 的 MasterKey
+4. 点击底部的 Deploy 按钮。
+等待几分钟，部署成功后，点击 Continue to Dashboard。
+你会获得一个类似 https://my-waline.vercel.app 的网址。复制这个网址！这就是你的评论服务器地址。
+
+第三阶段：连接到博客
+回到 VS Code：
+1. 打开 src/site.config.ts。
+2. 找到 waline 配置块。
+3. 修改两处：
+  ```
+waline: {
+  enable: true, // 1. 开启评论
+  server: 'https://my-waline.vercel.app', // 2. 换成刚才复制的那个新网址// ...其他保持不变
+}
+```
+提交代码并推送
+
+### 管理waline:
+第一个在评论区注册的人会成为管理员。还可以输入wailne地址/ui访问。
+
 ## 其他平台选择
 Github pages:https://docs.github.com/en/pages/quickstart
 
