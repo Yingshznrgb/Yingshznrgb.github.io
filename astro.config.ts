@@ -22,14 +22,18 @@ import {
 } from './src/plugins/shiki-offical/transformers.ts'
 import config from './src/site.config.ts'
 
+import vercel from '@astrojs/vercel';
+
 // https://astro.build/config
 export default defineConfig({
   // [Basic]
   site: 'https://Yingshznrgb.github.io',
+
   // Deploy to a sub path
   // https://astro-pure.js.org/docs/setup/deployment#platform-with-base-path
   // base: '/astro-pure/',
   trailingSlash: 'never',
+
   // root: './my-project-directory',
   server: { host: true },
 
@@ -38,6 +42,7 @@ export default defineConfig({
   // adapter: vercel(),
   // output: 'server',
   output: 'static',
+
   // Local (standalone)
   // adapter: node({ mode: 'standalone' }),
   // output: 'server',
@@ -121,5 +126,7 @@ export default defineConfig({
         subsets: ['latin']
       }
     ]
-  }
+  },
+
+  adapter: vercel()
 })
