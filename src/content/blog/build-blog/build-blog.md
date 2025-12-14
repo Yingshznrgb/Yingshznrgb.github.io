@@ -6,7 +6,8 @@ description: '此站的来源'
 tags:
   - Learnning
   - Skill-get
-language: 'Chinese'
+heroImage: { src: './thumbnail.jpg', color: '#8fb0d5ff' }
+language: '中文'
 ---
 
 起因是笔者看到某大佬的个人博客大受震撼，想要搭一个自己的博客，将学习过程记录以方便读者（~~如果有~~）借鉴（笔者在此之前是完全没学过前端，只会写一点点html和css, js基本不会，纯小白了也算是）
