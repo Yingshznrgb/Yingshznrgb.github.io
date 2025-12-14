@@ -37,6 +37,7 @@
     "@astrojs/markdown-remark": "^6.3.10",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@typescript-eslint/parser": "^8.48.1",
+    "@unocss/reset": "^66.5.10",
     "eslint": "^9.39.1",
     "eslint-plugin-astro": "^1.5.0",
     "hastscript": "^9.0.1",
