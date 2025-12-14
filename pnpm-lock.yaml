@@ -54,6 +54,9 @@ importers:
       eslint-plugin-astro:
         specifier: ^1.5.0
         version: 1.5.0(eslint@9.39.2(jiti@2.6.1))
+      hastscript:
+        specifier: ^9.0.1
+        version: 9.0.1
       prettier:
         specifier: ^3.7.4
         version: 3.7.4
