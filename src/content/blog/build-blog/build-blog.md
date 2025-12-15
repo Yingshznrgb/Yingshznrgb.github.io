@@ -6,7 +6,7 @@ description: '此站的来源'
 tags:
   - Learnning
   - Skill-get
-heroImage: { src: './thumbnail.jpg', color: '#5a95cfff' }
+heroImage: { src: './thumbnail.jpg', color: '#5e9fbeff' }
 language: '中文'
 ---
 
