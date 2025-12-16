@@ -1,9 +1,12 @@
 import { rehypeHeadingIds } from '@astrojs/markdown-remark'
-// import vercel from '@astrojs/vercel'
+import vercel from '@astrojs/vercel'
 import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+
+// 这一行非常重要！只有在 Vercel 环境下才为 true
+const isVercel = process.env.VERCEL === '1';
 
 // Local integrations
 import rehypeAutolinkHeadings from './src/plugins/rehype-auto-link-headings.ts'
@@ -22,7 +25,6 @@ import {
 } from './src/plugins/shiki-offical/transformers.ts'
 import config from './src/site.config.ts'
 
-import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
@@ -128,5 +130,7 @@ export default defineConfig({
     ]
   },
 
-  adapter: vercel()
+  // 关键修改：只有 isVercel 是 true 时才用适配器
+  // 否则（在 GitHub Actions 里）就是 undefined，自动变成纯静态模式
+  adapter: isVercel ? vercel() : undefined,
 })
