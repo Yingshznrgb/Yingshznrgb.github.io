@@ -1,0 +1,36 @@
+<!-- 1. 引入 APlayer 的样式 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+<!-- 2. 引入 APlayer 和 MetingJS 的脚本 -->
+<!-- is:inline 告诉 Astro 不要处理这些脚本，直接原样输出到浏览器 -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+<!-- 3. 放置播放器容器 -->
+<!-- 
+    server="tencent"  => 指定是腾讯(QQ音乐)
+    type="playlist"   => 指定类型是歌单
+    id="88888888"     => 【重点】这里换成你的 QQ 音乐歌单 ID
+    theme="#659EB9"   => 播放器主题色，可以换成你博客的主题色
+    order="list"      => 播放顺序：list(顺序) / random(随机)
+    list-folded="true" => 默认折叠歌单列表，设为 false 则默认展开
+    fixed="false"     => 设为 true 就是那种吸底的全局播放器模式
+-->
+<meting-js
+    server="tencent"
+    type="playlist"
+    id="9629658951"
+    theme="#659EB9"
+    order="random" 
+    list-folded="true"
+>
+</meting-js>
+
+<style>
+  /* 稍微调整一下样式，防止太宽 */
+  meting-js {
+    display: block;
+    max-width: 400px;
+    margin: 2rem auto;
+  }
+</style>

@@ -4,6 +4,9 @@ import PageLayout from '@/layouts/CommonPage.astro'
 import Substats from '@/components/about/Substats.astro'
 import ToolSection from '@/components/about/ToolSection.astro'
 
+
+import MusicPlayer from '@/components/Mymusic.astro' // 引用刚才建的组件
+
 const headings = [
   { depth: 2, slug: '爱好', text: '爱好' },
   { depth: 2, slug: '工具', text: '工具' },
@@ -164,6 +167,11 @@ const headings = [
     dissentiunt, cu meliore fuisset mei, vel quod voluptua ne. Ex dicat impedit mel, at eum oratio
     possit voluptatum.
   </Collapse> -->
+
+  <h2>最近在听</h2>
+  
+  <!-- 插入播放器 -->
+  <MusicPlayer />
 
   {/* about-blog */}
   <h2 id='about-blog'>About Blog</h2>
