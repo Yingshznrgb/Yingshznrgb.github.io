@@ -41,7 +41,7 @@ if (!images[imagePath])
         fetchpriority='high'
       />
 
-      <div class='flex flex-col items-center gap-y-4'>
+      <div class='flex flex-col items-center gap-y-4 animate-fade-in'>
         <h1 class='text-3xl font-medium'>{config.author}</h1>
         <div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
           <Label title='Xiamen'>
@@ -77,11 +77,11 @@ if (!images[imagePath])
 
     <div id='content' class='animate flex flex-col gap-y-10 md:w-4/5 lg:w-5/6'>
       <Section title='About'>
-        <p class='text-muted-foreground'>Student /</p>
-        <p class='text-muted-foreground'>
+        <p class='text-muted-foreground animate-fade-in delay-200'>Student /</p>
+        <p class='text-muted-foreground animate-fade-in delay-200'>
           XMU23级本科在读，计算机科学与技术专业
         </p>
-        <Button title='More about me' class='w-fit self-end' href='/about' variant='ahead' />
+        <Button title='More about me' class='w-fit self-end animate-fade-in delay-500' href='/about' variant='ahead' />
       </Section>
 
       {

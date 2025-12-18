@@ -1,18 +1,37 @@
 ---
-import { Button } from 'astro-pure/user'
-import PageLayout from '@/layouts/BaseLayout.astro'
-
-const meta = {
-  description: 'Not found',
-  title: '404'
-}
+import PageLayout from '@/layouts/BaseLayout.astro';
+import { Button } from 'astro-pure/user';
 ---
 
-<PageLayout {meta}>
-  <div class='px-4 py-10 text-center sm:px-6 lg:px-8'>
-    <h1 class='block text-7xl font-bold sm:text-9xl'>404</h1>
-    <p class='mt-3 text-muted-foreground'>Oops, something went wrong.</p>
-    <p class='text-lg'>Sorry, we couldn't find your page.</p>
-    <Button title='Back to home' href='/' variant='ahead' class='mt-5' />
+<PageLayout meta={{ title: 'Lost' }}>
+  <div class="flex h-[80vh] flex-col items-center justify-center text-center">
+    
+    <!-- 装饰背景：极淡的巨大数字，作为纹理存在 -->
+    <h1 class="pointer-events-none select-none font-serif text-[10rem] font-bold leading-none text-muted-foreground/5 sm:text-[15rem]">
+      404
+    </h1>
+
+    <!-- 核心内容：向上偏移一点，叠在数字上 -->
+    <div class="relative -mt-16 space-y-6 sm:-mt-24">
+      
+      <!-- 英文诗句 (衬线体 + 斜体) -->
+      <p class="animate-fade-in text-2xl font-serif italic text-foreground sm:text-3xl">
+        "Not all those who wander are lost."
+      </p>
+      
+      <!-- 中文翻译 (极简风格 + 宽字间距) -->
+      <p class="animate-fade-in delay-100 text-sm tracking-[0.5em] text-muted-foreground opacity-60">
+        流浪的人，未必迷路
+      </p>
+
+      <!-- 极简按钮 (圆角边框) -->
+      <div class="animate-fade-in delay-200 pt-8">
+        <Button href="/" title="Return Home" variant="outline" class="rounded-full px-8 border-muted-foreground/20 hover:bg-muted/50">
+          Return Home
+        </Button>
+      </div>
+      
+    </div>
+
   </div>
 </PageLayout>

@@ -1,5 +1,5 @@
 ---
-title: '我的个人博客搭建历程'
+title: '我的个人博客建站历程'
 publishDate: '2025-12-14'
 updatedDate: '2025-12-14'
 description: '此站的来源'
@@ -220,3 +220,6 @@ astro一些主题：
 https://astro-pure.js.org/docs
 
 https://d-sketon.github.io/astro-theme-reimu/
+
+----
+<p class="signature">— 屿知</p>

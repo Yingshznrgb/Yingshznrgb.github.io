@@ -10,6 +10,7 @@ import config from '@/site-config'
 import '@/assets/styles/global.css'
 import '@/assets/styles/app.css'
 
+
 interface Props {
   meta: SiteMeta
   highlightColor?: string
@@ -65,7 +66,7 @@ const {
         ) !important;
       }
 
-       /* 基础粒子样式 */
+        /* 水墨粒子样式 */
       :global(.click-particle) {
         position: fixed;
         top: 0;
@@ -73,43 +74,37 @@ const {
         pointer-events: none;
         z-index: 99999;
         border-radius: 50%;
-        /* 时间从0.8s延长到1.2s，动作更舒展 */
-        animation: particle-pop 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        
+        /* 核心魔法：加上模糊，模拟墨迹晕开 */
+        filter: blur(1px); 
+        
+        /* 动画：慢慢扩散并消失，像烟雾一样 */
+        animation: ink-spread 1.2s ease-out forwards;
       }
 
-      /* 动画关键帧：弹跳 -> 悬停 -> 下落 */
-      @keyframes particle-pop {
+      /* 动画关键帧：扩散 -> 悬停 -> 烟消云散 */
+      @keyframes ink-spread {
         0% {
-          opacity: 1;
-          /* 初始很小，在这个位置 */
-          transform: translate(var(--x), var(--y)) scale(0.3);
+          opacity: 0.6; /* 初始有点浓 */
+          transform: translate(var(--x), var(--y)) scale(0.2);
         }
-        15% {
-          opacity: 1;
-          /* 快速变大并冲到目标位置 (爆裂感) */
-          transform: translate(calc(var(--x) + var(--dx)), calc(var(--y) + var(--dy))) scale(1.2);
-        }
-        25% {
-          opacity: 1;
-          /* 稍微悬停一下，维持大小 */
-          transform: translate(calc(var(--x) + var(--dx) * 1.01), calc(var(--y) + var(--dy) * 1.01)) scale(1);
+        30% {
+          opacity: 0.4;
+          transform: translate(calc(var(--x) + var(--dx)), calc(var(--y) + var(--dy))) scale(1);
         }
         100% {
           opacity: 0;
-          /* 慢慢下落、旋转、变小消失 */
-          transform: translate(calc(var(--x) + var(--dx) * 1.3), calc(var(--y) + var(--dy) + 80px)) scale(0) rotate(var(--r));
+          /* 向上飘一点，像烟一样 */
+          transform: translate(calc(var(--x) + var(--dx) * 1.2), calc(var(--y) + var(--dy) - 20px)) scale(1.5);
         }
       }
 
-      /* 颜色：保持你喜欢的随机 HSL，亮色更粉嫩 */
+      /* 颜色：白天是淡墨色，晚上是淡白烟 */
       :global(.click-particle) {
-        background: hsl(var(--hue), 90%, 75%);
-        box-shadow: 0 0 6px hsl(var(--hue), 90%, 75%, 0.8);
+        background: rgba(0, 0, 0, 0.5); /* 50%透明的黑墨 */
       }
-
       :global(.dark .click-particle) {
-        background: hsl(var(--hue), 80%, 65%);
-        box-shadow: 0 0 8px hsl(var(--hue), 80%, 65%, 0.6);
+        background: rgba(255, 255, 255, 0.4); /* 40%透明的白烟 */
       }
     </style>
 
@@ -120,58 +115,73 @@ const {
             const particle = document.createElement('div');
             particle.className = 'click-particle';
 
-            // 随机颜色
-            const hue = Math.floor(Math.random() * 360);
-            // 随机大小 (稍微调大一点点，更显眼)
-            const size = Math.random() * 5 + 7; 
-
-            // 计算爆发坐标
+            const size = Math.random() * 4 + 4; 
             const dx = Math.cos(angle) * distance;
             const dy = Math.sin(angle) * distance;
-            
-            // 随机旋转
-            const r = Math.random() * 360 + 'deg';
+
+            // ✨ 核心魔法：随机生成不规则圆角 (30% - 70% 之间随机)
+            // 这会让每个粒子都长得像不一样的小石头/墨点
+            const r1 = Math.floor(Math.random() * 40 + 30);
+            const r2 = Math.floor(Math.random() * 40 + 30);
+            const r3 = Math.floor(Math.random() * 40 + 30);
+            const r4 = Math.floor(Math.random() * 40 + 30);
+            const borderRadius = `${r1}% ${100-r1}% ${r2}% ${100-r2}% / ${r3}% ${r4}% ${100-r4}% ${100-r3}%`;
 
             particle.style.setProperty('--x', x + 'px');
             particle.style.setProperty('--y', y + 'px');
             particle.style.setProperty('--dx', dx + 'px');
             particle.style.setProperty('--dy', dy + 'px');
-            particle.style.setProperty('--r', r);
-            particle.style.setProperty('--hue', hue.toString());
             
             particle.style.width = size + 'px';
             particle.style.height = size + 'px';
+            
+            // 应用不规则形状
+            particle.style.borderRadius = borderRadius; 
 
             document.body.appendChild(particle);
 
             setTimeout(() => {
               particle.remove();
-            }, 1200); // 对应 CSS 的 1.2s
+            }, 1200);
           }, delay);
         }
 
         document.addEventListener('click', (e) => {
-          // 1. 核心圆环：12个粒子，均匀分布成一个圆，找回“集中感”
-          const particleCount = 10;
-          const baseDistance = 40; // 爆发半径
+          // 粒子数量稍微减少，更清爽
+          const particleCount = 8; 
+          const baseDistance = 25;
           
           for (let i = 0; i < particleCount; i++) {
-            // 严格的圆形分布
-            const angle = (Math.PI * 2 / particleCount) * i;
-            const distance = baseDistance + Math.random() * 5; // 轻微浮动
-            // 稍微错开一点时间，产生“波纹”感
-            createParticle(e.clientX, e.clientY, angle, distance, i * 10);
-          }
-
-          // 2. 随机填充：8个粒子，随机散落在周围，增加丰富度
-          for (let i = 0; i < 8; i++) {
             const angle = Math.random() * Math.PI * 2;
-            const distance = baseDistance + Math.random() * 20;
-            createParticle(e.clientX, e.clientY, angle, distance, i * 15);
+            const distance = baseDistance + Math.random() * 10;
+            // 随机延迟，不像之前那么整齐，更有泼墨的感觉
+            createParticle(e.clientX, e.clientY, angle, distance, Math.random() * 100);
           }
         });
       })();
+
+// ===================
+ // 平滑滚动
+ // ============  
+      import Lenis from 'lenis' 
+
+      const lenis = new Lenis({
+        duration: 1.9, // 滚动持续时间，越长越慢越慵懒
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // 缓动曲线
+        smoothWheel: true,
+      })
+
+      function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+      }
+
+      requestAnimationFrame(raf) 
+
+
     </script>
+
 
   </body>
 </html>
+

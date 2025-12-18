@@ -50,6 +50,7 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
   highlightColor={primaryColor}
   back='/blog'
 >
+
   {!!headings.length && <TOC {headings} slot='sidebar' />}
 
   <Hero {data} {remarkPluginFrontmatter} slot='header'>
@@ -70,6 +71,7 @@ const primaryColor = data.heroImage?.color ?? 'hsl(var(--primary) / var(--un-tex
   </Fragment>
 
   <slot name='bottom-sidebar' slot='bottom-sidebar' />
+  
 </PageLayout>
 
 {config.integ.mediumZoom.enable && <MediumZoom />}

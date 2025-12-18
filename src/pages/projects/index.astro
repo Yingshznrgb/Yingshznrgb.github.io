@@ -8,12 +8,43 @@ import wechatImg from '@/assets/wechat-pay.png'
 import { QRCode } from 'astro-pure/advanced'
 import { Icon } from 'astro-pure/user'
 
+
 // 这里定义页面右侧的目录导航
 const headings = [
   { depth: 2, slug: 'my-projects', text: 'My projects' },
   // { depth: 2, slug: 'Coming-soon', text: 'Coming Soon' },
   { depth: 2, slug: 'Sponsorship', text: 'Sponsorship' }
 ]
+
+{/* 定义你的项目数据 */}
+
+  const projects = [
+    {
+      name: 'IOOI-EmotinoEgg',
+      description: '青春期情绪认知助手',
+      links: [
+        { type: 'github', href: 'https://github.com/Yingshznrgb/IOOI-EmotionEgg' },
+        { type: 'site', href: 'https://github.com/Yingshznrgb/IOOI-EmotionEgg' }
+      ]
+    },
+    {
+      name: 'Zouma',
+      description: '转鹭台：一灯一世界',
+      links: [
+        { type: 'github', href: 'https://github.com/Yingshznrgb/zouma' },
+        { type: 'site', href: 'https://github.com/Yingshznrgb/zouma' }
+      ]
+    },
+    {
+      name: 'MirrorAdviser',
+      description: '肌刻定制',
+      links: [
+        { type: 'github', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' },
+        { type: 'site', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' }
+      ]
+    }
+  ];
+
 ---
 
 <PageLayout title='Projects' {headings} view>
@@ -31,7 +62,8 @@ const headings = [
     ============================================= -->
   
   <h2 id='my-projects'>My Projects</h2>
-  <ProjectSection
+
+  <!-- <ProjectSection
     projects={[
       {
         image:'image1.png',
@@ -42,26 +74,54 @@ const headings = [
           { type: 'site', href: 'https://github.com/Yingshznrgb/IOOI-EmotionEgg' }
         ]
       },
-      {
-        image:'image2.png',
-        name: 'Zouma',
-        description: '转鹭台：一灯一世界',
-        links: [
-          { type: 'github', href: 'https://github.com/Yingshznrgb/zouma' },
-          { type: 'site', href: 'https://github.com/Yingshznrgb/zouma' }
-        ]
-      },
-      {
-        image:'image.png',
-        name: 'MirrorAdviser',
-        description: '肌刻定制',
-        links: [
-          { type: 'github', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' },
-          { type: 'site', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' }
-        ]
-      },
+
     ]}
-  /> 
+  />  -->
+
+<div class="grid gap-4 sm:grid-cols-2">
+  {projects.map((project) => (
+    <div class="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-border bg-muted/20 p-5 transition-all duration-300 hover:-translate-y-1 hover:bg-muted/40 hover:shadow-lg">
+      
+      {/* --- 1. 首字母水印 --- */}
+      <div class="pointer-events-none absolute -top-2 -right-0.3 z-0 select-none font-serif text-9xl font-bold text-muted-foreground/5 transition-all duration-500 group-hover:-top-0 group-hover:-right-4 group-hover:rotate-12 group-hover:opacity-10">
+        {project.name.charAt(0).toUpperCase()}
+      </div>
+
+      {/* --- 2. 文字内容 --- */}
+      <div class="pointer-events-none relative z-0 flex flex-col gap-2">
+        <h3 class="font-medium text-lg leading-tight text-foreground transition-colors group-hover:text-primary">
+          {project.name}
+        </h3>
+        <p class="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+          {project.description}
+        </p>
+      </div>
+      
+      {/* --- 3. 底部链接图标 (z-20: 保证能独立点击) --- */}
+      <div class="relative z-20 mt-4 flex gap-3">
+        {project.links.map((link) => (
+          <a 
+            href={link.href} 
+            target="_blank"
+            class="flex items-center justify-center rounded-full p-1 text-muted-foreground transition-colors hover:bg-background hover:text-primary"
+            title={link.type}
+          >
+            <Icon name={link.type === 'github' ? 'github' : 'globe'} class="size-5" />
+          </a>
+        ))}
+      </div>
+
+      {/* --- 4. 全卡片点击热区 (z-10: 覆盖在文字上，但在图标下) --- */}
+      <a 
+        href={project.links[0]?.href} 
+        target="_blank" 
+        class="absolute inset-0 z-10"
+        aria-label={`View project ${project.name}`}
+      ></a>
+
+    </div>
+  ))}
+</div>
  
 
   <!-- <h2 id='coming-soon'>Coming Soon</h2> -->

@@ -1,3 +1,107 @@
+/* 引入字体 霞鹜文楷 签名 */
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+/* 应用到全站 */
+body {
+  /* 把 LXGW WenKai Screen 放在最前面 */
+  font-family: "LXGW WenKai Screen", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 质感 */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -10; /* 放在最底层 */
+  opacity: 0.06; /* 极淡，若隐若现 */
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* 文字浮动 */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  opacity: 0; /* 初始不可见 */
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* 延迟播放，制造错落感 */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+
+
+/* 首字下沉 */
+/* 仅在文章正文的第一段生效 */
+.prose > p:first-of-type::first-letter {
+  float: left;
+  font-size: 3.5rem; /* 大号字 */
+  line-height: 1;
+  margin-top: 0.1em;
+  margin-right: 0.5rem;
+  font-weight: bold;
+  color: var(--primary); /* 使用你的主题主色 */
+  font-family: serif; /* 强制用衬线体，更有味道 */
+}
+
+/* 签名 */
+
+
+.signature {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  text-align: right;
+  margin-top: 2rem;
+}
+
+/* 鼠标选中荧光 */
+/* 白天：淡金色高亮，文字变深灰 */
+::selection {
+  background-color: #8fd2f1; 
+  color: #1f2937;
+}
+
+/* 黑夜：淡紫色高亮，文字变白 */
+:global(.dark) ::selection {
+  background-color: #6366f1;
+  color: #ffffff;
+}
+
+/* 改造引用块 */
+.prose blockquote {
+  position: relative;
+  font-family: "LXGW WenKai Screen", serif; /* 确保用楷体 */
+  font-style: normal; /* 去掉默认的斜体，楷体正着看才好看 */
+  background-color: var(--muted); /* 淡色背景 */
+  border-left: none; /* 去掉左边那根生硬的线 */
+  border-radius: 8px;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+}
+
+/* 添加左上角的巨大引号装饰 */
+.prose blockquote::before {
+  content: "“";
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--primary);
+  opacity: 0.2;
+  font-family: serif;
+}
 
 /* [Animation] */
 @keyframes fade-in-up {
