@@ -4,6 +4,9 @@ import AstroPureIntegration from 'astro-pure'
 import { defineConfig, fontProviders } from 'astro/config'
 import rehypeKatex from 'rehype-katex'
 import remarkMath from 'remark-math'
+// 导入自己编写的Aside插件
+import remarkDirective from 'remark-directive';
+import { remarkAsides } from './src/plugins/remark-asides'; // 注意路径
 
 // 这一行非常重要！只有在 Vercel 环境下才为 true
 const isVercel = process.env.VERCEL === '1';
@@ -59,7 +62,7 @@ export default defineConfig({
 
   // [Markdown]
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath,remarkDirective, remarkAsides],
     rehypePlugins: [
       [rehypeKatex, {}],
       rehypeHeadingIds,

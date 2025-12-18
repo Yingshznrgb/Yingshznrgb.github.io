@@ -1,14 +1,14 @@
 ---
 title: '从初学者的角度扫过Astro'
 publishDate: '2025-12-16'
-updatedDate: '2025-12-16'
+updatedDate: '2025-12-18'
 description: '此篇记录了我搭建Astro以来踩过的坑，遇到的各种小白问题'
 tags:
   - Learnning
   - Astro
 heroImage: { src: './thumbnail.jpg', color: '#e2afd0ff' }
 language: '中文'
-draft: true
+draft: false
 ---
 对于第一次接触前端的我，处处像个小白，小到@的使用，大到组件的修改，总是遇到各种问题，在gemini的帮助下也是逐渐走上了正确的道路。
 
@@ -30,3 +30,16 @@ draft: true
 
 如果想要在一个python项目里面使用类似的技巧，其实你只要项目写的足够规范，比如设置了PYTHONPATH或者通过Pip install -e . 把项目安装为可编辑包，就可以随时随地import了，就是这么任性。
 
+### 关于Tab
+这个主题的tab很有特色，但是修改的时候要注意匹配关系，主要体现在：
+```
+const headings = [
+  { depth: 2, slug: 'hobbies', text: '爱好' },
+  { depth: 2, slug: 'tools', text: '工具' },
+  { depth: 2, slug: 'social-networks', text: '社交' },
+  { depth: 2, slug: 'recent', text: '最近在听' },
+  { depth: 2, slug: 'about-blog', text: 'About Blog' },
+
+]
+```
+此处定义的slug必须和下面使用的一致，并且区分大小写，在修改小标题的时候需要注意，不然会失去目录的动态效果，变成静态目录(~~虽然也挺好看的~~)。

@@ -2,10 +2,17 @@
 import PageLayout from '@/layouts/CommonPage.astro'
 import ProjectSection from '@/components/projects/ProjectSection.astro'
 
+import { Image } from 'astro:assets'
+import alipayImg from '@/assets/alipay.png'
+import wechatImg from '@/assets/wechat-pay.png'
+import { QRCode } from 'astro-pure/advanced'
+import { Icon } from 'astro-pure/user'
+
 // 这里定义页面右侧的目录导航
 const headings = [
-  { depth: 2, slug: 'My projects', text: 'My projects' },
-  { depth: 2, slug: 'coming-soon', text: 'Coming Soon' }
+  { depth: 2, slug: 'my-projects', text: 'My projects' },
+  // { depth: 2, slug: 'Coming-soon', text: 'Coming Soon' },
+  { depth: 2, slug: 'Sponsorship', text: 'Sponsorship' }
 ]
 ---
 
@@ -13,7 +20,7 @@ const headings = [
   
   <!-- 简单的欢迎语 -->
   <p>
-    这里展示我的个人项目。
+    这里展示我的部分项目，如果你对我的项目感兴趣欢迎留言。
   </p>
 
   
@@ -36,7 +43,7 @@ const headings = [
         ]
       },
       {
-        image:'image.png',
+        image:'image2.png',
         name: 'Zouma',
         description: '转鹭台：一灯一世界',
         links: [
@@ -45,6 +52,7 @@ const headings = [
         ]
       },
       {
+        image:'image.png',
         name: 'MirrorAdviser',
         description: '肌刻定制',
         links: [
@@ -56,8 +64,59 @@ const headings = [
   /> 
  
 
-  <h2 id='coming-soon'>Coming Soon</h2>
+  <!-- <h2 id='coming-soon'>Coming Soon</h2> -->
   <p>更多精彩项目正在开发中...</p>
+
+  <h2 id='Sponsorship'>Sponsorship</h2>
+  <p>如果你喜欢我的项目，欢迎资助我继续做下去，我会把你放入赞助人列表，谢谢你</p>
+
+
+  <div class='flex flex-wrap justify-center gap-6 my-8'>
+
+  {/* --- 微信收款码 --- */}
+  <div class='group relative flex flex-col items-center rounded-xl border bg-muted p-3 shadow-sm overflow-hidden'>
+    
+    {/* 1. 遮罩层：变成了磨砂玻璃 */}
+    {/* backdrop-blur-xl: 强力模糊下面的内容 */}
+    {/* bg-background/30: 稍微加点底色，增强遮挡感 */}
+    <div class='absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 bg-background/90 backdrop-blur-xl'>
+      <div class='rounded-full bg-background p-3 shadow-sm'>
+        <Icon name='wechat-pay' class='size-8 text-foreground' />
+      </div>
+    </div>
+
+    {/* 2. 图片本体：保持清晰，不用动它 */}
+    <Image
+      src={wechatImg}
+      alt="WeChat Pay"
+      class='max-w-44 rounded-lg scale-110 transition-all duration-500 group-hover:scale-100'
+    />
+
+  </div>
+
+  {/* --- 支付宝收款码 --- */}
+  <div class='group relative flex flex-col items-center rounded-xl border bg-muted p-3 shadow-sm overflow-hidden'>
+    
+    {/* 遮罩层 */}
+    <div class='absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-500 group-hover:opacity-0 bg-background/90 backdrop-blur-xl'>
+      <div class='rounded-full bg-background p-3 shadow-sm'>
+        <Icon name='alipay' class='size-8 text-foreground' />
+      </div>
+    </div>
+
+    {/* 图片本体 */}
+    <Image
+      src={alipayImg}
+      alt="Alipay"
+      class='max-w-44 rounded-lg scale-110 transition-all duration-500 group-hover:scale-100'
+    />
+
+  </div>
+
+</div>
+  
+
+
 
   
 

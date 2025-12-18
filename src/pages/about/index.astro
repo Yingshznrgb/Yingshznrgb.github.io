@@ -8,12 +8,13 @@ import ToolSection from '@/components/about/ToolSection.astro'
 import MusicPlayer from '@/components/Mymusic.astro' // 引用刚才建的组件
 
 const headings = [
-  { depth: 2, slug: '爱好', text: '爱好' },
-  { depth: 2, slug: '工具', text: '工具' },
-  { depth: 2, slug: '社交', text: '社交' },
+  { depth: 2, slug: 'hobbies', text: '爱好' },
+  { depth: 2, slug: 'tools', text: '工具' },
+  { depth: 2, slug: 'social-networks', text: '社交' },
   // { depth: 2, slug: 'gossips', text: 'Gossips' },
+  { depth: 2, slug: 'recent', text: '最近在听' },
   { depth: 2, slug: 'about-blog', text: 'About Blog' },
-  { depth: 2, slug: '最近在听', text: '最近在听' },
+
 ]
 ---
 
@@ -169,7 +170,7 @@ const headings = [
     possit voluptatum.
   </Collapse> -->
 
-  <h2>最近在听</h2>
+  <h2 id='recent'>最近在听</h2>
   
   <!-- 插入播放器 -->
   <MusicPlayer />

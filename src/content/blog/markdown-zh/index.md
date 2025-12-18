@@ -1,6 +1,7 @@
 ---
 title: Markdown 语法支持
-publishDate: 2023-07-26 08:00:00
+publishDate: 2023-07-26 
+updatedDate: '2025-12-18'
 description: 'Markdown 是一种轻量级的「标记语言」。'
 tags:
   - Markdown
@@ -313,6 +314,44 @@ markdown 分段落是需要空一行的。
 \*\*不想这里的文本被加粗\*\*
 
 ---
+
+## 我编写的Aside
+```
+:::tip[aaa]
+这是一个tip
+:::
+
+:::note
+这是一个note
+:::
+
+:::caution
+这是一个caution
+:::
+
+
+:::danger
+这是一个danger
+:::
+
+```
+
+预览：
+:::tip[aaa]
+这是一个aaa
+:::
+
+:::note
+这是一个note
+:::
+
+:::caution
+这是一个caution
+:::
+
+:::danger
+这是一个danger
+:::
 
 ## 内嵌 Astro 组件
 

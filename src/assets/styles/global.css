@@ -283,4 +283,69 @@ span.katex-display {
 }
 
 
+/* Aside 容器样式 */
+.aside {
+  padding: 1rem;
+  border-left: 4px solid;
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  background-color: var(--aside-bg, #f4f4f5);
+}
 
+.aside-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  margin-top: 0 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.aside-icon svg {
+  display: block;
+}
+
+/* Tip (提示 - 绿色/蓝色) */
+.aside-tip {
+  border-color: #3b82f6; /* 蓝色边框 */
+  background-color: rgba(59, 130, 246, 0.1); /* 浅蓝背景 */
+  color: #1e3a8a;
+}
+.aside-tip .aside-title { color: #1d4ed8; }
+:global(.dark) .aside-tip { 
+  background-color: rgba(59, 130, 246, 0.15); 
+  color: #dbeafe; 
+}
+:global(.dark) .aside-tip .aside-title { color: #60a5fa; }
+
+/* Caution (警告 - 黄色) */
+.aside-caution {
+  border-color: #eab308;
+  background-color: rgba(234, 179, 8, 0.1);
+  color: #713f12;
+}
+.aside-caution .aside-title { color: #a16207; }
+:global(.dark) .aside-caution { 
+  background-color: rgba(234, 179, 8, 0.15); 
+  color: #fef9c3; 
+}
+:global(.dark) .aside-caution .aside-title { color: #facc15; }
+
+/* Danger (危险 - 红色) */
+.aside-danger {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #7f1d1d;
+}
+.aside-danger .aside-title { color: #b91c1c; }
+:global(.dark) .aside-danger { 
+  background-color: rgba(239, 68, 68, 0.15); 
+  color: #fee2e2; 
+}
+:global(.dark) .aside-danger .aside-title { color: #f87171; }
+
+/* Note (笔记 - 灰色) */
+.aside-note {
+  border-color: #71717a;
+  background-color: rgba(113, 113, 122, 0.1);
+}
