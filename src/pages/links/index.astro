@@ -38,7 +38,7 @@ const linkEditPage = 'https://github.com/Yingshznrgb/Yingshznrgb.github.io/blob/
         const script = `navigator.clipboard.writeText('${val}');document.dispatchEvent(new CustomEvent('toast',{detail:{message:'Copied "${val}" to clipboard!'}}))`
         return (
           <>
-            <span class='text-end'>{name}:</span>
+            <span class='text-first'>{name}:</span>
             <samp class='cursor-pointer' onclick={script}>
               {val}
             </samp>
@@ -57,7 +57,7 @@ const linkEditPage = 'https://github.com/Yingshznrgb/Yingshznrgb.github.io/blob/
     <li>推荐了本站 You've recommended our link on your website</li>
     <li>站点活着且有正式域名 Make sure your site is alive with a formal domain</li>
     <li>
-      至少三篇原创文章且最近一年更新过 At least 5 original articles and exists articles released in
+      至少三篇原创文章且最近一年更新过 At least 3 original articles and exists articles released in
       recent year
     </li>
     <li>内容不违反国家法律 Content does not violate laws</li>

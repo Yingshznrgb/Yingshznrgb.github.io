@@ -8,12 +8,15 @@ import wechatImg from '@/assets/wechat-pay.png'
 import { QRCode } from 'astro-pure/advanced'
 import { Icon } from 'astro-pure/user'
 
+import Sponsors from '@/components/projects/Sponsors.astro'
+
 
 // 这里定义页面右侧的目录导航
 const headings = [
   { depth: 2, slug: 'my-projects', text: 'My projects' },
   // { depth: 2, slug: 'Coming-soon', text: 'Coming Soon' },
-  { depth: 2, slug: 'Sponsorship', text: 'Sponsorship' }
+  { depth: 2, slug: 'Sponsorship', text: 'Sponsorship' },
+  { depth: 2, slug: 'Thanks', text: 'Thanks' },
 ]
 
 {/* 定义你的项目数据 */}
@@ -42,7 +45,15 @@ const headings = [
         { type: 'github', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' },
         { type: 'site', href: 'https://github.com/Yingshznrgb/MirrorAdvisor' }
       ]
-    }
+    },
+    {
+      name: 'MetaVoice',
+      description: '基于webRTC的分布式多媒体交互系统',
+      links: [
+        { type: 'github', href: 'https://github.com/Yingshznrgb/WebRTC-Based-Distributed-Multimedia-Interaction-System' },
+        { type: 'site', href: 'https://github.com/Yingshznrgb/WebRTC-Based-Distributed-Multimedia-Interaction-System' }
+      ]
+    },
   ];
 
 ---
@@ -174,10 +185,17 @@ const headings = [
   </div>
 
 </div>
-  
+    
+  <h2 id='Thanks'>Thanks</h2>
 
+    <p>Thanks to the following sponsors:</p>
+    <Sponsors
+      progressMax={25}
+      sponsors={[
+        { name: '梁**', platform: 'Wechat', amount: 0.01, date: '2025-12-19' },
+        
+      ]}
+    />
 
-
-  
 
 </PageLayout>
