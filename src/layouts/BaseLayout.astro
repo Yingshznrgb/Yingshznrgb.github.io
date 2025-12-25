@@ -288,6 +288,54 @@ const {
       }
       .dark .aplayer-info { color: #fff !important; }
       .dark .aplayer .aplayer-lrc p { color: #a1a1aa !important; }
+
+      /* ✨ 桌面歌词模式 ✨ */
+  
+  /* 1. 把歌词容器“劫持”到屏幕底部 */
+  #player-wrapper .aplayer-lrc {
+    position: fixed !important;
+    bottom: 80px !important;      /* 距离底部的高度 */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 80vw !important;       /* 宽度占屏幕 80% */
+    max-width: 800px !important;
+    height: 60px !important;      /* 高度足够容纳两行 */
+    z-index: 9998 !important;     /* 保证在最上层 */
+    background: transparent !important; /* 完全透明背景 */
+    pointer-events: none !important;    /* 鼠标穿透，不挡点击 */
+    overflow: visible !important;
+  }
+
+  /* 2. 歌词文字美化 */
+  #player-wrapper .aplayer-lrc p {
+    font-size: 20px !important;   /* 大字体 */
+    font-weight: bold !important;
+    color: rgba(255, 255, 255, 0.6) !important; /* 默认半透明白 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5), 0 0 2px rgba(0,0,0,0.8) !important; /* 黑色描边，保证在白背景也能看清 */
+    line-height: 30px !important;
+    opacity: 0 !important;        /* 默认隐藏非当前歌词 */
+    transition: all 0.3s ease !important;
+  }
+
+  /* 3. 当前播放的那一句高亮 */
+  #player-wrapper .aplayer-lrc p.aplayer-lrc-current {
+    font-size: 24px !important;   /* 当前句更大 */
+    color: #ffd700 !important;    /* 金色高亮 */
+    opacity: 1 !important;        /* 显示 */
+    transform: scale(1.1);        /* 微微放大 */
+  }
+
+  /* 4. 隐藏歌词遮罩（如果有残留的话） */
+  .aplayer-lrc:before, .aplayer-lrc:after { display: none !important; }
+  
+  /* 5. 适配暗黑模式 (文字颜色微调) */
+  .dark #player-wrapper .aplayer-lrc p {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+  .dark #player-wrapper .aplayer-lrc p.aplayer-lrc-current {
+    color: #fff !important; /* 暗黑模式下纯白高亮 */
+  }
+
     </style>
 
 </html>
