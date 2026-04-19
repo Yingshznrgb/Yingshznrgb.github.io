@@ -160,7 +160,7 @@ OpenClaw中文官网：https://docs.openclaw.ai/zh-CN
 
 直接选择官方推荐的一键安装方式（安装过程建议保持科学上网）：
 1. 打开进入wsl
-2. 运行安装命令：curl -fsSL https://openclaw.ai/install.sh | bash
+2. 运行安装命令：'curl -fsSL https://openclaw.ai/install.sh | bash'
    
 ![alt text](image-8.png)
 
@@ -224,9 +224,7 @@ ui我选web ui，比较方便用
 
 到这里基本配置就结束了。
 
-![alt text](image-23.png)
-
-这里给了直接访问的链接（http://127.0.0.1:18789/#token=efa8c189df930f366f818d5172d575913ccbb21b625b590d）
+这里给了直接访问的链接（http://127.0.0.1:18789/#token=xxxxxxxxxx）
 
 还有工作区备份、安全警告等说明文档。
 
@@ -267,11 +265,9 @@ openclaw gateway start
 ```
 npx -y @tencent-weixin/openclaw-weixin-cli@latest install
 ```
-![alt text](image-27.png)
 
 然后打开手机微信，我的，设置，插件，可以看到clawbot插件，然后扫描二维码即可连接成功：
 
-![alt text](image-28.png)
 ![alt text](image-29.png)
 
 可以输入'openclaw status'查看Channels状态：
@@ -402,9 +398,9 @@ skills:
 
       db:
         driver: "mssql" 
-        host: "10.27.194.109" # Windows IP
+        host: "10.27.1xxxxxxx" # Windows IP
         port: 1433
-        database: "StudentDB" # 数据库名
+        database: "Studxxxxxx" # 数据库名
         username: "${env.DB_USER}"
         password: "${env.DB_PASS}"
         encryption: true
