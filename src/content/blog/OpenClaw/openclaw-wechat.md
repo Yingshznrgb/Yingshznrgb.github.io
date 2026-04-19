@@ -9,7 +9,6 @@ tags:
   - AI-agent
 heroImage: { src: './thumbnail.png', color: 'rgb(232, 94, 25)' }
 language: '中文'
-draft: true
 ---
 
 > 此篇文档来源于我的数据库系统原理课程一项作业，要求使用小龙虾对话查询数据库。于是我将整个过程记录下来，形成了这篇文章。
