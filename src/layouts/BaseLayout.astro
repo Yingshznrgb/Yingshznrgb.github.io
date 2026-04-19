@@ -215,7 +215,8 @@ const {
     <script is:inline>
       // 核心逻辑：全站只运行一次
       if (!window.ap) {
-        fetch('https://api.i-meto.com/meting/api?server=tencent&type=playlist&id=9629658951')
+        // fetch('https://api.i-meto.com/meting/api?server=tencent&type=playlist&id=9629658951')
+        fetch(https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9629658951)
           .then(res => res.json())
           .then(data => {
             window.ap = new APlayer({
