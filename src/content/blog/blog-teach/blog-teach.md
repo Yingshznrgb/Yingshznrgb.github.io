@@ -8,7 +8,6 @@ tags:
   - Skill-get
 heroImage: { src: './thumbnail.png', color: 'rgb(217, 146, 47)' }
 language: '中文'
-draft: true
 ---
 
 
