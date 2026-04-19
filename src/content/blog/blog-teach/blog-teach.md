@@ -276,6 +276,11 @@ Vercel 会列出你的 GitHub 仓库，找到你刚刚创建的网站仓库，�
 从这里开始，尽情创造吧！
 
 最后给大家一些优秀的博客案例：
+https://cmder.xyz/
+
+https://step-out.github.io/
+
+https://wendyluo1127.github.io/
 
 https://unmei.cn/
 
@@ -287,7 +292,7 @@ https://axi404.top/
 
 https://d-sketon.github.io/astro-theme-reimu/
 
-https://liaoxuefeng.com/index.html
+https://liaoxuefeng.com/index.html 推荐他的git教程：https://liaoxuefeng.com/books/git/what-is-git/index.html
 
 https://www.ruanyifeng.com/
 
