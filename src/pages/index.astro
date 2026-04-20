@@ -10,6 +10,7 @@ import ProjectCard from '@/components/home/ProjectCard.astro'
 import Section from '@/components/home/Section.astro'
 import SkillLayout from '@/components/home/SkillLayout.astro'
 import config from '@/site-config'
+import GitHubCalendar from '@/components/GitHubGalendar.astro' 
 
 const languages = ['C','C++','Python','Pytorch','Matlab','Html','CSS']
 const frontend = ['Astro']
@@ -182,11 +183,14 @@ if (!images[imagePath])
         />
       </Section> -->
 
+      
+
       <Section title='Skills'>
         <SkillLayout title='Languages' skills={languages} />
         <SkillLayout title='Frontend' skills={frontend} />
         <SkillLayout title='Tool' skills={tool} />
       </Section>
+      <GitHubCalendar />
     </div>
     <Quote class='mt-12' />
   </main>
