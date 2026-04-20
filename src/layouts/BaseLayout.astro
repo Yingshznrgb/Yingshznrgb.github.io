@@ -34,6 +34,9 @@ const {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script is:inline src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+
+
   </head>
 
   <body class='flex justify-center bg-background text-foreground' {...props}>
@@ -216,7 +219,7 @@ const {
       // 核心逻辑：全站只运行一次
       if (!window.ap) {
         // fetch('https://api.i-meto.com/meting/api?server=tencent&type=playlist&id=9629658951')
-        fetch(https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9629658951)
+        fetch('https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9629658951')
           .then(res => res.json())
           .then(data => {
             window.ap = new APlayer({
