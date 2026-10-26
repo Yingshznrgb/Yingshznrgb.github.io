@@ -1,37 +1,92 @@
+<div id='recent-music' class='my-4'>
+  <p data-music-status role='status'>正在加载最近在听…</p>
+  <button data-music-retry type='button' hidden>重新加载</button>
+  <div id='inline-aplayer'></div>
+  <noscript>请启用 JavaScript 以显示音乐播放器。</noscript>
+</div>
 
+<script>
+  const MUSIC_API = 'https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9629658951'
 
-<!-- 1. 放置播放器容器 -->
-<div id="inline-aplayer" class="my-4"></div>
+  type Player = { list: { clear: () => void }; destroy: () => void }
+  type PlayerConstructor = new (options: {
+    container: HTMLElement
+    lrcType: number
+    theme: string
+    listFolded: boolean
+    audio: { name: string; artist: string; url: string; pic?: string; lrc?: string }[]
+  }) => Player
 
-<script is:inline>
-  // 更换 API 地址
-  const MUSIC_API = 'https://api.injahow.cn/meting/?server=tencent&type=playlist&id=9629658951';
+  let player: Player | undefined
+  let request: AbortController | undefined
 
-  function initInlinePlayer() {
-    // 检查 APlayer 是否已由 Layout 加载
-    if (typeof APlayer === 'undefined') {
-      console.warn('APlayer 未加载');
-      return;
-    }
+  async function initInlinePlayer() {
+    const container = document.getElementById('inline-aplayer')
+    const status = document.querySelector<HTMLElement>('#recent-music [data-music-status]')
+    const retry = document.querySelector<HTMLButtonElement>('#recent-music [data-music-retry]')
+    if (!container || !status || !retry || player || request) return
 
-    fetch(MUSIC_API)
-      .then(res => res.json())
-      .then(data => {
-        new APlayer({
-          container: document.getElementById('inline-aplayer'),
-          lrcType: 3,
-          theme: '#659EB9',
-          listFolded: true,
-          audio: data // 直接使用获取到的数据
-        });
+    status.hidden = false
+    status.textContent = '正在加载最近在听…'
+    retry.hidden = true
+    retry.onclick = () => void initInlinePlayer()
+
+    const controller = new AbortController()
+    request = controller
+    const timeout = window.setTimeout(() => controller.abort(), 15000)
+
+    try {
+      const APlayer = (window as Window & { APlayer?: PlayerConstructor }).APlayer
+      if (!APlayer) throw new Error('播放器未加载，请刷新页面重试。')
+
+      const response = await fetch(MUSIC_API, { signal: controller.signal })
+      if (!response.ok) throw new Error(`歌单加载失败（HTTP ${response.status}），请稍后重试。`)
+
+      const audio = await response.json()
+      if (!Array.isArray(audio) || audio.length === 0) {
+        throw new Error('暂时没有获取到歌曲，请稍后重试。')
+      }
+      if (audio.some((track) => !track || typeof track.url !== 'string' || !track.url)) {
+        throw new Error('歌单数据格式异常，请稍后重试。')
+      }
+
+      // 请求完成时可能已经离开 About，不能再向旧容器挂载播放器。
+      if (request !== controller || controller.signal.aborted || !container.isConnected) return
+
+      player = new APlayer({
+        container,
+        lrcType: 3,
+        theme: '#659EB9',
+        listFolded: true,
+        audio
       })
-      .catch(err => console.error('最近在听播放器加载失败:', err));
+      status.hidden = true
+    } catch (error) {
+      if (request !== controller || !container.isConnected) return
+      status.textContent = controller.signal.aborted
+        ? '歌单加载超时，请检查网络后重试。'
+        : error instanceof Error
+          ? error.message
+          : '最近在听加载失败，请稍后重试。'
+      retry.hidden = false
+      console.error('最近在听播放器加载失败:', error)
+    } finally {
+      window.clearTimeout(timeout)
+      if (request === controller) request = undefined
+    }
   }
 
-  // 确保在页面加载后执行
-  document.addEventListener('DOMContentLoaded', initInlinePlayer);
-  // 如果开启了无刷新跳转，也需要重新初始化
-  document.addEventListener('astro:after-swap', initInlinePlayer);
+  // 由 Astro 打包为模块，只注册一次；page-load 同时覆盖直达和站内导航。
+  document.addEventListener('astro:page-load', initInlinePlayer)
+  document.addEventListener('astro:before-swap', () => {
+    request?.abort()
+    request = undefined
+    // APlayer 的音频错误回调可能延迟执行，先清空歌单，避免销毁后继续切歌。
+    player?.list.clear()
+    player?.destroy()
+    player = undefined
+  })
+  void initInlinePlayer()
 </script>
 
 <style>
@@ -40,6 +95,12 @@
     margin: 2rem auto;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  [data-music-retry] {
+    cursor: pointer;
+    color: #659eb9;
+    text-decoration: underline;
   }
 </style>
