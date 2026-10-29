@@ -4,7 +4,7 @@ publishDate: '2026-4-19'
 updatedDate: '2026-4-19'
 description: '在WSL2下部署OpenClaw，连接微信ClawBot并实现SQL server数据库远程查询'
 tags:
-  - Learnning
+  - Learning
   - Skill-get
   - AI-agent
 heroImage: { src: './thumbnail.png', color: 'rgb(232, 94, 25)' }

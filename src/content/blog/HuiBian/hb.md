@@ -2,7 +2,7 @@
 title: '汇编上机考试指北'
 publishDate: '2025-12-18'
 updatedDate: '2025-12-18'
-description: '由于汇编的特性，上机考看这一篇就够了'
+description: '针对XMU23级汇编原理课程：上机考看这一篇就够了'
 tags:
   - 汇编
   - learning

@@ -4,7 +4,7 @@ publishDate: '2026-4-14'
 updatedDate: '2026-4-19'
 description: '什么是个人博客？如何搭建简单的个人博客？完备的博客应有的功能？'
 tags:
-  - Learnning
+  - Learning
   - Skill-get
 heroImage: { src: './thumbnail.png', color: 'rgb(217, 146, 47)' }
 language: '中文'

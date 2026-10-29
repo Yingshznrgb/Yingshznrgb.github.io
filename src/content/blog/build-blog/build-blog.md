@@ -4,18 +4,16 @@ publishDate: '2025-12-14'
 updatedDate: '2025-12-14'
 description: '此站的来源'
 tags:
-  - Learnning
+  - Learning
   - Skill-get
 heroImage: { src: './thumbnail.jpg', color: '#5e9fbeff' }
 language: '中文'
 ---
 
-起因是笔者看到某大佬的个人博客大受震撼，想要搭一个自己的博客，将学习过程记录以方便读者（~~如果有~~）借鉴（笔者在此之前是完全没学过前端，只会写一点点html和css, js基本不会，纯小白了也算是）
+起因是笔者看到某大佬的个人博客大受震撼，想要搭一个自己的博客，将学习过程记录以方便读者（~~如果有~~）借鉴（笔者在此之前是完全没学过前端，只会写一点点html和css, js基本不会，纯小白了算是）
 
 ## 框架选择
 目前主流框架有三个：Hexo、Astro、Hugo
-
-一句话：小白选Hexo、会前端选Astro，~~M属性选Hugo~~。
 
 借鉴这篇文章：https://zhuanlan.zhihu.com/p/1981456864127522296
 
@@ -27,7 +25,7 @@ Astro:https://docs.astro.build/zh-cn/getting-started/
 
 Hugo：https://gohugo.io/
 
-我选择了Astro，然后找了一个主题感觉不错先用着：
+我选择了Astro，然后找了感觉还不错的主题：
 
 https://github.com/cworld1/astro-theme-pure
 

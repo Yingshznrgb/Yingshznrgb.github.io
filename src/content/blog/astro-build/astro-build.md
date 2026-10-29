@@ -4,7 +4,7 @@ publishDate: '2025-12-16'
 updatedDate: '2025-12-18'
 description: '此篇记录了我搭建Astro以来踩过的坑，遇到的各种小白问题'
 tags:
-  - Learnning
+  - Learning
   - Astro
 heroImage: { src: './thumbnail.jpg', color: '#e2afd0ff' }
 language: '中文'

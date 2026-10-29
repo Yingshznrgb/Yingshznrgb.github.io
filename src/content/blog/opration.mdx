@@ -1,0 +1,101 @@
+---
+title: '常用指令'
+publishDate: '2026-12-19'
+
+description: '记录了一些较为常用的命令'
+heroImage: { src: './picture/456580.jpg', color: '#6594eaff' }
+tags:
+    - Learning
+language: '中文'
+draft: false
+---
+记录一些较为常用的命令便于查找：
+
+## 博客：
+```
+# 本地测试
+pnpm run dev
+
+# 代码推送
+git add .
+git commit -m "xxx"
+git push
+```
+
+
+## conda:
+```
+# 查看conda版本
+conda --version
+
+# 创建虚拟环境，moqi是环境名称可以自行设定，python版本也可以自己设定
+conda create -n moqi python=3.9
+
+# 查看虚拟环境
+conda env list
+
+# 激活虚拟环境
+conda activate moqi
+
+# 退出虚拟环境
+conda deactivate
+
+# 删除虚拟环境
+conda remove --name moqi --all
+
+# 查询包的安装情况
+conda list
+```
+
+## 启动wsl:  	
+```
+wsl.exe -d Ubuntu
+```
+
+## sys:
+```
+# 将当前脚本所在目录的上级目录添加到 sys.path 中
+parent_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.append(parent_dir)
+```
+
+## 驱动：
+```
+nvidia-smi
+```
+
+## 查看cuda版本：
+```
+nvcc --version
+```
+## 监控面板：
+```
+nvitop
+nvitop -m full
+```
+
+## 树莓派：
+```
+sudo passwd pi                   #修改 pi 密码  
+sudo passwd root                 #设置 root 密码    
+su root                          #切换到 root 用户  
+su pi                            #切换到 pi 用户 
+```
+
+## 查看内存占用情况：
+```
+free -h
+```
+
+
+## pip配阿里源：
+```
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+```
+
+## 其他：
+```
+手动删除密钥举例：
+ssh-keygen -R 192.168.202.223
+```
+
